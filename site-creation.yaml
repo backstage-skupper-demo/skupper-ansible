@@ -9,6 +9,9 @@
   tasks:
     - ansible.builtin.import_role:
         name: skupper_init
+    - name: Pause for 5 minutes to build app cache
+      ansible.builtin.pause:
+        minutes: 1
     - ansible.builtin.import_role:
         name: skupper_token
     - name: Displaying generated tokens
