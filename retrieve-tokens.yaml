@@ -1,0 +1,20 @@
+- name: Read a kv2 secret from Vault via the remote host with userpass auth
+  community.hashi_vault.vault_read:
+    url: "{{ vault_url }}"
+    path: skupper/{{ inventory_hostname }}
+  register: secret
+
+- name: Display the secret data
+  ansible.builtin.debug:
+    msg: "{{ secret.data.data.token }}"
+
+- name: Set tokens
+  set_fact:
+    generatedToken: "{{ secret.data.data.token }}"
+  delegate_to: "proj1"
+  delegate_facts: True
+  with_items: "{{ groups['all'] }}"
+
+- name: Get host
+  ansible.builtin.debug:
+    msg: "{{ generatedToken }}"

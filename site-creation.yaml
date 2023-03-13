@@ -1,0 +1,24 @@
+---
+- hosts: linked
+  tasks:
+    - name: Retrieve token links
+      ansible.builtin.include_tasks: retrieve-tokens.yaml
+- hosts: local
+  collections:
+    - skupper.network
+  tasks:
+    - ansible.builtin.import_role:
+        name: skupper_init
+    - ansible.builtin.import_role:
+        name: skupper_token
+    - name: Displaying generated tokens
+      debug:
+        msg: "Generated tokens -> {{ generatedToken }}"
+    - name: Store token in vault
+      community.hashi_vault.vault_write:
+        url: "{{ vault_url }}"
+        path: "skupper/{{ init['siteName'] }}"
+        data:
+          token: "{{ generatedToken }}"
+    - ansible.builtin.import_role:
+        name: skupper_link
