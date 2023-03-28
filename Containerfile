@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 
-RUN yum install -y python3
+RUN yum install -y python3 openssh-clients
 RUN pip3 install --upgrade pip \
     && pip3 install ansible hvac \
     && ansible-galaxy collection install skupper.network
