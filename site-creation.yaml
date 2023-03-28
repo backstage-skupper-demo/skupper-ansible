@@ -14,17 +14,17 @@
         minutes: 1
     - ansible.builtin.import_role:
         name: skupper_token
-      when: podman is defined
+      when: podman is not defined
     - name: Displaying generated tokens
       debug:
         msg: "Generated tokens -> {{ generatedToken }}"
-      when: podman is defined
+      when: podman is not defined
     - name: Store token in vault
       community.hashi_vault.vault_write:
         url: "{{ vault_url }}"
         path: "skupper/{{ init['siteName'] }}"
         data:
           token: "{{ generatedToken }}"
-      when: podman is defined
+      when: podman is not defined
     - ansible.builtin.import_role:
         name: skupper_link
