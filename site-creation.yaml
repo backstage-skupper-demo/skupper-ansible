@@ -14,6 +14,7 @@
     - ansible.builtin.import_role:
         name: skupper_cli_install
       when: skupper_installed.rc != 0
+      become: true
     - ansible.builtin.import_role:
         name: skupper_init
     - name: Pause for 5 minutes to build app cache
