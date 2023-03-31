@@ -1,0 +1,7 @@
+---
+- hosts: local
+  collections:
+    - skupper.network
+  tasks:
+    - ansible.builtin.import_role:
+        name: skupper_service
