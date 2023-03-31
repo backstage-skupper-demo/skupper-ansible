@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 
-RUN yum install -y python3 openssh-clients
+RUN yum install -y python3 openssh-clients git
 RUN pip3 install --upgrade pip \
     && pip3 install ansible hvac
 RUN ansible-galaxy collection install community.hashi_vault \
