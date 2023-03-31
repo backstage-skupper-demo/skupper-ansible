@@ -12,4 +12,4 @@ RUN curl -LO https://github.com/skupperproject/skupper/releases/download/1.3.0/s
     && tar -xvzf skupper-cli-1.3.0-linux-amd64.tgz \
     && mv skupper /usr/local/bin
 
-COPY retrieve-tokens.yaml site-creation.yaml ./
+COPY retrieve-tokens.yaml site-creation.yaml service.yaml ./
