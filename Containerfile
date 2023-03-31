@@ -4,7 +4,7 @@ RUN yum install -y python3 openssh-clients git
 RUN pip3 install --upgrade pip \
     && pip3 install ansible hvac
 RUN ansible-galaxy collection install community.hashi_vault \
-    && ansible-galaxy collection install git+https://github.com/mathianasj/skupper-ansible.git#/skupper/network,1bf9d3370f8e2d4c4e461fc155a5b2cbfea2c938
+    && ansible-galaxy collection install git+https://github.com/mathianasj/skupper-ansible.git#/skupper/network,bcbbd1bdb6ec09860b3e7fb07daf04b3f9e90c54
 RUN curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz \
     && tar -xvzf openshift-client-linux.tar.gz \
     && mv oc kubectl /usr/local/bin
