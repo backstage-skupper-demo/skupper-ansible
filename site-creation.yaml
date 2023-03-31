@@ -17,7 +17,7 @@
       become: true
     - ansible.builtin.import_role:
         name: skupper_init
-    - name: Pause for 5 minutes to build app cache
+    - name: Pause for 1 minutes for site to come online
       ansible.builtin.pause:
         minutes: 1
     - ansible.builtin.import_role:
