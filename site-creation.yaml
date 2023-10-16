@@ -18,10 +18,10 @@
         minutes: 1
     - ansible.builtin.import_role:
         name: skupper_token
-      when: podman is not defined
+      when: platform != "podman"
     - name: Displaying generated tokens
       debug:
         msg: "Generated tokens -> {{ generatedToken }}"
-      when: podman is not defined
+      when: platform != "podman"
     - ansible.builtin.import_role:
         name: skupper_link
