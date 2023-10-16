@@ -25,3 +25,5 @@
       when: platform != "podman"
     - ansible.builtin.import_role:
         name: skupper_link
+    - ansible.builtin.import_role:
+        name: skupper_service
