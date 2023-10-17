@@ -3,19 +3,19 @@
   collections:
     - skupper.network
   tasks:
-    # - name: Check if skupper is installed
-    #   ansible.builtin.command: which skupper
-    #   register: skupper_installed
-    #   ignore_errors: yes
-    # - ansible.builtin.import_role:
-    #     name: skupper_cli_install
-    #   when: skupper_installed.rc != 0
-    #   become: true
-    # - ansible.builtin.import_role:
-    #     name: skupper_init
-    # - name: Pause for 1 minutes for site to come online
-    #   ansible.builtin.pause:
-    #     minutes: 1
+    - name: Check if skupper is installed
+      ansible.builtin.command: which skupper
+      register: skupper_installed
+      ignore_errors: yes
+    - ansible.builtin.import_role:
+        name: skupper_cli_install
+      when: skupper_installed.rc != 0
+      become: true
+    - ansible.builtin.import_role:
+        name: skupper_init
+    - name: Pause for 1 minutes for site to come online
+      ansible.builtin.pause:
+        minutes: 1
     - ansible.builtin.import_role:
         name: skupper_token
       when: platform != "podman"
